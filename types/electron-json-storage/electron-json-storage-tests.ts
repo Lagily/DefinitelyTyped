@@ -15,11 +15,19 @@ storage.set('foo', { foo: 'bar' }, (err: any) => { });
 storage.set('bar', { foo: 'bar' }, (err: any) => { });
 storage.set('baz', { foo: 'bar' }, {dataPath: NEW_DATA_PATH}, (err: any) => { });
 
+storage.get<{foo: string}>('foo', (err: any, data: object) => {
+    console.log(JSON.stringify(data));
+});
+
 storage.get('foo', (err: any, data: object) => {
     console.log(JSON.stringify(data));
 });
 
 storage.get('baz', {dataPath: NEW_DATA_PATH}, (err: any, data: object) => {
+    console.log(JSON.stringify(data));
+});
+
+storage.get<{foo: string}>('baz', {dataPath: NEW_DATA_PATH}, (err: any, data: object) => {
     console.log(JSON.stringify(data));
 });
 
